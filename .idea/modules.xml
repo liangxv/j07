@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/j07.iml" filepath="$PROJECT_DIR$/j07.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w1-d1/p1-w1-d1.iml" filepath="$PROJECT_DIR$/p1-w1-d1/p1-w1-d1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w1-d2/p1-w1-d2.iml" filepath="$PROJECT_DIR$/p1-w1-d2/p1-w1-d2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w1-d3/p1-w1-d3.iml" filepath="$PROJECT_DIR$/p1-w1-d3/p1-w1-d3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w1-d4/p1-w1-d4.iml" filepath="$PROJECT_DIR$/p1-w1-d4/p1-w1-d4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w1-d5/p1-w1-d5.iml" filepath="$PROJECT_DIR$/p1-w1-d5/p1-w1-d5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w2-d1/p1-w2-d1.iml" filepath="$PROJECT_DIR$/p1-w2-d1/p1-w2-d1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w2-d2/p1-w2-d2.iml" filepath="$PROJECT_DIR$/p1-w2-d2/p1-w2-d2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w2-d3/p1-w2-d3.iml" filepath="$PROJECT_DIR$/p1-w2-d3/p1-w2-d3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w2-d4/p1-w2-d4.iml" filepath="$PROJECT_DIR$/p1-w2-d4/p1-w2-d4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w2-d5/p1-w2-d5.iml" filepath="$PROJECT_DIR$/p1-w2-d5/p1-w2-d5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w3-d1/p1-w3-d1.iml" filepath="$PROJECT_DIR$/p1-w3-d1/p1-w3-d1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w3-d2/p1-w3-d2.iml" filepath="$PROJECT_DIR$/p1-w3-d2/p1-w3-d2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w3-d3/p1-w3-d3.iml" filepath="$PROJECT_DIR$/p1-w3-d3/p1-w3-d3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w3-d4/p1-w3-d4.iml" filepath="$PROJECT_DIR$/p1-w3-d4/p1-w3-d4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p1-w3-d5/p1-w3-d5.iml" filepath="$PROJECT_DIR$/p1-w3-d5/p1-w3-d5.iml" />
+    </modules>
+  </component>
+</project>
