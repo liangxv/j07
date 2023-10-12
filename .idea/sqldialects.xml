@@ -3,5 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/p1-w4-d2/src/com/woniuxy/p1/AppDemo1.java" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/p1-w4-d2/src/com/woniuxy/p1/MariaDBExample.java" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/p1-w4-d2/src/com/woniuxy/p2/BookDaoImpl.java" dialect="MariaDB" />
   </component>
 </project>
