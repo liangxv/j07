@@ -3,8 +3,8 @@ package com.woniuxy.p2;
 import java.util.Scanner;
 
 public class BookManagerSystem {
-    private static Scanner scanner = new Scanner(System.in);
-    private static BookDao bookDao = new BookDaoImpl();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final BookDao bookDao = new BookDaoImpl();
 
     public static void main(String[] args) {
         int choice;
@@ -146,7 +146,7 @@ public class BookManagerSystem {
         System.out.print("请输入作者的名字：");
         String author = scanner.next(); //字符串
         System.out.print("请输入价格：");
-        Double price = scanner.nextDouble();
+        double price = scanner.nextDouble();
         System.out.print("请输入分类：");
         String category = scanner.next();
         Book book = new Book(null, title, author, price, category);
