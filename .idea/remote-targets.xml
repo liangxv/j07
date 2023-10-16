@@ -14,15 +14,14 @@
           </config>
         </ContributedStateBase>
       </target>
-      <target name="WSL - Arch" type="wsl" uuid="4235b65c-d30e-40fd-b745-462e7cda566d">
+      <target name="kotori@127.0.0.1:22" type="ssh/sftp" uuid="2e691ae7-0ade-4b66-b089-86b4c2fcd6f7">
         <config>
-          <option name="distributionMsId" value="Arch" />
-          <option name="projectRootOnTarget" value="{exitCode=0, timeout=false, cancelled=false, stdout=/mnt/e/Users/kotori/AppData/Local/Programs/IntelliJ IDEA Ultimate/jbr/bin&#10;, stderr=}/j07" />
+          <option name="projectRootOnTarget" value="/home/kotori/j07" />
+          <option name="serverName" value="kotori@127.0.0.1:22 password" />
         </config>
         <ContributedStateBase type="JavaLanguageRuntime">
           <config>
-            <option name="homePath" value="/usr/lib/jvm/java-11-openjdk" />
-            <option name="javaVersionString" value="11.0.20" />
+            <option name="homePath" value="/usr/lib/jvm/java-8-openjdk" />
           </config>
         </ContributedStateBase>
       </target>

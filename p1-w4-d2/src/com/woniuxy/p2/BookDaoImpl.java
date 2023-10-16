@@ -109,6 +109,13 @@ public class BookDaoImpl implements BookDao {
         return executeQuery(sql);
     }
 
+    public Boolean isExist(String str){
+        String sql="select * from books where title=?";
+        Object[] params ={str};
+        return (executeQuery(sql, params)==null);
+    }
+
+
     private List<Book> executeQuery(String sql, Object... params) {
         List<Book> books = new ArrayList<>();
         Connection connection = null;
@@ -127,6 +134,10 @@ public class BookDaoImpl implements BookDao {
             }
 
             resultSet = statement.executeQuery();
+            if (!resultSet.isBeforeFirst()) {
+                return null;
+            }
+
             while (resultSet.next()) {
                 Book book = encapsulate(resultSet);
                 books.add(book);
@@ -171,4 +182,6 @@ public class BookDaoImpl implements BookDao {
         books.setCategory(resultSet.getString(5));
         return books;
     }
+
+
 }

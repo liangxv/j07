@@ -36,4 +36,6 @@ public interface BookDao {
 
     //.按价格排序输出所有书籍(1-升序 0-降序)
     List<Book> getBooksSortedByPrice(int sortOrder);
+
+    Boolean isExist(String str);
 }

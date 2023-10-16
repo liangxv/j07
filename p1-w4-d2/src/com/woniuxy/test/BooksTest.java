@@ -22,8 +22,16 @@ public class BooksTest {
 
     @Test
     public void addBook(){
-
-        bookDao.addBook(new Book(null,"dsf","dsf",56.00,"sdf"));
+        Book book =new Book();
+        if ((!bookDao.isExist("dsafsaf"))) {
+            System.out.println("已存在");
+            return;
+        }
+        book.setTitle("dsafsaf");
+        book.setAuthor("sdf");
+        book.setCategory("小说");
+        book.setPrice(56.00);
+        bookDao.addBook(book);
     }
 
     @Test

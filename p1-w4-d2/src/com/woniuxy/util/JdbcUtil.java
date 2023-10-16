@@ -1,19 +1,36 @@
 package com.woniuxy.util;
 
-import java.sql.*;
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+import javax.sql.DataSource;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
 
 public class JdbcUtil {
     //参数放在最上面，方便以后修改。URL可以简写，如果服务器名是localhost，并且端口号是3306，可以简写 jdbc:mysql:///woniu
 
-    private static final String URL = "jdbc:mariadb://172.22.74.102:3306/woniu";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final DataSource dataSource;
+
+    static {
+        try {
+            Properties properties = new Properties();
+            InputStream stream = JdbcUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");
+            properties.load(stream);
+            dataSource = DruidDataSourceFactory.createDataSource(properties);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * 获取数据库连接
      */
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        return dataSource.getConnection();
     }
 
     /**
