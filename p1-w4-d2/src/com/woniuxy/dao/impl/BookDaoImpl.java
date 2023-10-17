@@ -1,6 +1,7 @@
 package com.woniuxy.dao.impl;
 
 import com.woniuxy.dao.BookDao;
+import com.woniuxy.entity.BooksByCategoryDTO;
 import com.woniuxy.pojo.Book;
 import com.woniuxy.util.JdbcUtil;
 
@@ -9,9 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 
@@ -53,8 +52,8 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public List<Map<String, Object>> countBooksByCategory() {
-        List<Map<String, Object>> list = new ArrayList<>();
+    public List<BooksByCategoryDTO> countBooksByCategory() {
+        List<BooksByCategoryDTO> list = new ArrayList<>();
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -64,10 +63,10 @@ public class BookDaoImpl implements BookDao {
             statement = connection.prepareStatement("select category, count(*) as count from books group by category");
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                HashMap<String, Object> record =new HashMap<>();
-                record.put("category", resultSet.getString(1));
-                record.put("count",resultSet.getInt(2));
-                list.add(record);
+                BooksByCategoryDTO dto = new BooksByCategoryDTO();
+                dto.setCategory(resultSet.getString("category"));
+                dto.setCount(resultSet.getInt("count"));
+                list.add(dto);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

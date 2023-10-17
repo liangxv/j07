@@ -1,9 +1,9 @@
 package com.woniuxy.dao;
 
+import com.woniuxy.entity.BooksByCategoryDTO;
 import com.woniuxy.pojo.Book;
 
 import java.util.List;
-import java.util.Map;
 
 public interface BookDao {
     // 查询所有书籍
@@ -22,7 +22,7 @@ public interface BookDao {
     Integer updateBookById(int id, Book updatedBook);
 
     // 统计每种分类下有几本书
-    List<Map<String, Object>> countBooksByCategory();
+    List<BooksByCategoryDTO> countBooksByCategory();
 
     // 输出指定分类下有哪些书籍
     List<Book> getBooksByCategory(String category);
