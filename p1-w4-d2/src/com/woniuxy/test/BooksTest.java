@@ -1,8 +1,8 @@
 package com.woniuxy.test;
 
-import com.woniuxy.p2.Book;
-import com.woniuxy.p2.BookDao;
-import com.woniuxy.p2.BookDaoImpl;
+import com.woniuxy.pojo.Book;
+import com.woniuxy.dao.BookDao;
+import com.woniuxy.dao.impl.BookDaoImpl;
 import org.junit.Test;
 
 public class BooksTest {

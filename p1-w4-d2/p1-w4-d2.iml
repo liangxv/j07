@@ -58,7 +58,9 @@
           <root url="jar://$MODULE_DIR$/lib/druid-1.2.16.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ideaLibSources/druid-1.2.16-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>
