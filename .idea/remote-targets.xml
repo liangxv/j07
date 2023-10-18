@@ -25,6 +25,17 @@
           </config>
         </ContributedStateBase>
       </target>
+      <target name="WSL - Arch" type="wsl" uuid="ca2137e0-ff8b-4378-b4ce-872e6de1bb3a">
+        <config>
+          <option name="distributionMsId" value="Arch" />
+          <option name="projectRootOnTarget" value="{exitCode=0, timeout=false, cancelled=false, stdout=/mnt/e/Users/kotori/AppData/Local/Programs/IntelliJ IDEA Ultimate/jbr/bin&#10;, stderr=}/j07" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="/usr/lib/jvm/java-8-openjdk" />
+          </config>
+        </ContributedStateBase>
+      </target>
     </targets>
   </component>
 </project>
