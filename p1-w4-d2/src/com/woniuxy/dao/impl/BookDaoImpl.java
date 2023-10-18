@@ -5,27 +5,23 @@ import com.woniuxy.entity.BooksByCategoryDTO;
 import com.woniuxy.pojo.Book;
 import com.woniuxy.util.JdbcUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> getAllBooks() {
-        String sql="select * from books";
+        String sql = "select * from books";
         return executeQuery(sql);
     }
 
     @Override
     public Book getBookById(int id) {
-        String sql="select * from books where id=?";
-        Object[] params ={id};
+        String sql = "select * from books where id=?";
+        Object[] params = {id};
         List<Book> books = executeQuery(sql, params);
         return books.get(0);
     }
@@ -33,21 +29,21 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Integer addBook(Book book) {
         String sql = "insert into books (title, author, price, category) values (?,?,?,?)";
-        Object[] params ={book.getTitle(), book.getAuthor(), book.getPrice(), book.getCategory()};
-        return executeUpdate(sql,params);
+        Object[] params = {book.getTitle(), book.getAuthor(), book.getPrice(), book.getCategory()};
+        return executeUpdate(sql, params);
     }
 
     @Override
     public Integer deleteBookById(int id) {
         String sql = "delete from books where id=?";
-        Object[] params ={id};
+        Object[] params = {id};
         return executeUpdate(sql, params);
     }
 
     @Override
     public Integer updateBookById(int id, Book book) {
         String sql = "update books set title=?,author=?,price=?,category=? where id=?";
-        Object[] params ={book.getTitle(), book.getAuthor(), book.getPrice(), book.getCategory(),id};
+        Object[] params = {book.getTitle(), book.getAuthor(), book.getPrice(), book.getCategory(), id};
         return executeUpdate(sql, params);
     }
 
@@ -79,8 +75,8 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Book> getBooksByCategory(String category) {
         String sql = "select * from books where category=?";
-        Object[] params ={category};
-        return executeQuery(sql,params);
+        Object[] params = {category};
+        return executeQuery(sql, params);
     }
 
     @Override
@@ -100,7 +96,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Book> getBooksByPage(int page, int pageSize) {
         String sql = "select * from books limit ?,?";
-        Object[] params = {(page-1) * pageSize, pageSize};
+        Object[] params = {(page - 1) * pageSize, pageSize};
         return executeQuery(sql, params);
     }
 
@@ -110,10 +106,10 @@ public class BookDaoImpl implements BookDao {
         return executeQuery(sql);
     }
 
-    public Boolean isExist(String str){
-        String sql="select * from books where title=?";
-        Object[] params ={str};
-        return (executeQuery(sql, params)==null);
+    public Boolean isExist(String str) {
+        String sql = "select * from books where title=?";
+        Object[] params = {str};
+        return (executeQuery(sql, params) == null);
     }
 
 
@@ -128,11 +124,7 @@ public class BookDaoImpl implements BookDao {
             statement = connection.prepareStatement(sql);
 
             // 设置参数
-            if (params != null) {
-                for (int i = 0; i < params.length; i++) {
-                    statement.setObject(i + 1, params[i]);
-                }
-            }
+            setParams(statement, params);
 
             resultSet = statement.executeQuery();
             if (!resultSet.isBeforeFirst()) {
@@ -152,25 +144,28 @@ public class BookDaoImpl implements BookDao {
         return books;
     }
 
-    private Integer executeUpdate(String sql,Object... params) {
+    private Integer executeUpdate(String sql, Object... params) {
         Connection connection = null;
         PreparedStatement statement = null;
 
         try {
             connection = JdbcUtil.getConnection();
             statement = connection.prepareStatement(sql);
+            setParams(statement, params);
 
-            // 设置参数
-            if (params != null) {
-                for (int i = 0; i < params.length; i++) {
-                    statement.setObject(i + 1, params[i]);
-                }
-            }
             return statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             JdbcUtil.close(connection, statement);
+        }
+    }
+
+    private void setParams(PreparedStatement statement, Object[] params) throws SQLException {
+        ParameterMetaData metaData = statement.getParameterMetaData();
+        int count = metaData.getParameterCount();
+        for (int i = 0; i < count; i++) {
+            statement.setObject(i + 1, params[i]);
         }
     }
 
