@@ -47,6 +47,7 @@ public class EmployeeView {
                     break;
                 case 2:
                     getAllEmployee();
+                    break;
                 case 4:
                     //查询自己的客户
                     findByEmployeeId();
