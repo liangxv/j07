@@ -32,4 +32,10 @@ public interface CustomerDao {
 
     // 根据ID删除客户
     Integer deleteCustomerById(int id);
+
+    int buy(int customerId, int productId);
+
+    long count(Integer id);
+
+    List<Customer> findByEmployeeId(Integer id);
 }

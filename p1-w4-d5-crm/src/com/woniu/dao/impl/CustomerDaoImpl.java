@@ -1,14 +1,13 @@
 package com.woniu.dao.impl;
 
+import com.woniu.dao.BaseDao;
 import com.woniu.dao.CustomerDao;
 import com.woniu.entity.CustomerByGenderDTO;
 import com.woniu.pojo.Customer;
-import com.woniu.utils.JdbcTemplate;
 
 import java.util.List;
 
-public class CustomerDaoImpl implements CustomerDao {
-    private final JdbcTemplate jdbcTemplate = new JdbcTemplate();
+public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 
     @Override
     public List<Customer> getAllCustomers() {
@@ -74,4 +73,30 @@ public class CustomerDaoImpl implements CustomerDao {
         return jdbcTemplate.update(sql, id);
 
     }
+
+    /**
+     * 查询自己的客户
+     */
+
+    public int buy(int customerId, int productId) {
+        return jdbcTemplate.update("INSERT INTO cus_prod VALUES(?,?)", customerId, productId);
+    }
+
+    /**
+     * 统计当前员工的客户数
+     */
+    @Override
+    public long count(Integer employeeId) {
+        return (long) jdbcTemplate.queryForMap("SELECT COUNT(*) customerNumber FROM customer WHERE empId=?", employeeId)
+                .get("customerNumber");
+    }
+
+    /**
+     * 某个客户购买了某件产品
+     */
+    @Override
+    public List<Customer> findByEmployeeId(Integer employeeId) {
+        return jdbcTemplate.query("SELECT * FROM customer WHERE empId=?", Customer.class, employeeId);
+    }
+
 }

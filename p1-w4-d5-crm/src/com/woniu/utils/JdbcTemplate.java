@@ -1,32 +1,24 @@
 package com.woniu.utils;
 
-import com.alibaba.druid.pool.DruidDataSourceFactory;
-
 import javax.sql.DataSource;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Properties;
+import java.util.Map;
 
 /**
  * 通用的JDBC工具类
  */
 public class JdbcTemplate {
 
-    private static DataSource dataSource;
+    private DataSource dataSource;
 
-    static {
-        try {
-            Properties properties = new Properties();
-            InputStream stream = JdbcUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");
-            properties.load(stream);
-            dataSource = DruidDataSourceFactory.createDataSource(properties);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public JdbcTemplate(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
+
     /**
      * 获取连接对象
      */
@@ -190,6 +182,64 @@ public class JdbcTemplate {
         for (int i = 0; i < count; i++) {
             //每几个占位符，参数值
             statement.setObject(i + 1, params[i]);
+        }
+    }
+
+    /**
+     * 查询多条记录，每条记录是Map对象
+     */
+    public List<Map<String, Object>> queryForList(String sql, Object... params) {
+        //创建一个集合
+        List<Map<String, Object>> list = new ArrayList<>();
+        //声明三个对象
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            //1. 获取连接对象
+            connection = getConnection();
+            //2. 通过连接对象获取语句对象
+            statement = connection.prepareStatement(sql);
+            //给参数赋值
+            setParameter(statement, params);
+            //3. 发送SQL语句给数据库服务器
+            resultSet = statement.executeQuery();
+            //获取结果集元数据
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            //获取有多少列
+            int columnCount = metaData.getColumnCount();
+            //4. 获取数据库返回的结果集
+            while (resultSet.next()) {
+                //每条记录封装成Map一个对象
+                Map<String, Object> entry = new LinkedHashMap<>();
+                //添加到集合中
+                for (int i = 1; i <= columnCount; i++) {
+                    //获取列名
+                    String columnLabel = metaData.getColumnLabel(i);
+                    entry.put(columnLabel, resultSet.getObject(i));
+                }
+                //将这条记录添加到集合中
+                list.add(entry);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            //5. 关闭连接，释放资源
+            close(connection, statement, resultSet);
+        }
+        return list;
+    }
+
+    /**
+     * 查询1条记录，封装成Map
+     */
+    public Map<String, Object> queryForMap(String sql, Object... params) {
+        //直接调用上面的方法
+        List<Map<String, Object>> list = queryForList(sql, params);
+        if (!list.isEmpty()) {
+            return list.get(0);
+        } else {
+            return null;
         }
     }
 }

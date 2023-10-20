@@ -3,6 +3,7 @@ package com.woniu;
 import com.woniu.utils.LoginStatus;
 import com.woniu.view.CommonView;
 import com.woniu.view.CustomerView;
+import com.woniu.view.EmployeeView;
 
 import java.util.Scanner;
 
@@ -17,7 +18,7 @@ public class CrmApplication {
             switch (option) {
                 case 1:
                     //调用员工管理模块
-                    System.out.println("调用员工管理模块");
+                    EmployeeView.operate();
                     break;
                 case 2:
                     //调用客户管理模块
