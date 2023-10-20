@@ -4,7 +4,15 @@ import com.woniu.dao.BaseDao;
 import com.woniu.dao.EmployeeDao;
 import com.woniu.pojo.Employee;
 
+import java.util.List;
+
 public class EmployeeDaoImpl extends BaseDao implements EmployeeDao {
+
+    @Override
+    public List<Employee> getAllEmployee() {
+        String sql ="select * from crm.employee";
+        return jdbcTemplate.query(sql,Employee.class);
+    }
 
     @Override
     public Employee login(String loginName, String password) {

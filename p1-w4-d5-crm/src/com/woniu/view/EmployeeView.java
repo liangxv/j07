@@ -2,6 +2,7 @@ package com.woniu.view;
 
 import com.woniu.dao.CustomerDao;
 import com.woniu.dao.EmployeeDao;
+import com.woniu.dao.ProductDao;
 import com.woniu.dao.impl.CustomerDaoImpl;
 import com.woniu.dao.impl.EmployeeDaoImpl;
 import com.woniu.dao.impl.ProductDaoImpl;
@@ -17,7 +18,7 @@ public class EmployeeView {
     static CustomerDao customerDao =new CustomerDaoImpl();
     static EmployeeDao employeeDao = new EmployeeDaoImpl();
 
-    static ProductDaoImpl productDao =new ProductDaoImpl();
+    static ProductDao productDao =new ProductDaoImpl();
 
     private static final Scanner scanner = new Scanner(System.in);
     private static void menu() {
@@ -44,6 +45,8 @@ public class EmployeeView {
                     //新增员工
                     addEmployee();
                     break;
+                case 2:
+                    getAllEmployee();
                 case 4:
                     //查询自己的客户
                     findByEmployeeId();
@@ -64,6 +67,10 @@ public class EmployeeView {
                     return;
             }
         }
+    }
+
+    private static void getAllEmployee() {
+        employeeDao.getAllEmployee().forEach(System.out::println);
     }
 
     /**
