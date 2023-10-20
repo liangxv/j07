@@ -10,7 +10,7 @@ public class CustomerView {
 
     static CustomerDaoImpl customer =new CustomerDaoImpl();
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void menu() {
         System.out.println("------------- 客户管理 -------------");
