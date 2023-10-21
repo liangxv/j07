@@ -29,7 +29,7 @@ public class UserView {
         }
     }
 
-    private static void userRegistration() {
+    public static void userRegistration() {
         System.out.println("输入用户名");
         String name = scanner.next();
         System.out.println("输入密码");

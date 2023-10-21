@@ -26,7 +26,6 @@ public class ProductView {
 
     // 操作
     public static void operate() {
-        label:
         while (true) {
             menu();
             int opt = scanner.nextInt();
