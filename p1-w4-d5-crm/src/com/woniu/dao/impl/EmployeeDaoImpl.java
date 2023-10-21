@@ -15,6 +15,11 @@ public class EmployeeDaoImpl extends BaseDao implements EmployeeDao {
     }
 
     @Override
+    public List<Employee> getEmployeeById(int id) {
+        return null;
+    }
+
+    @Override
     public Employee login(String loginName, String password) {
         String sql ="select * from crm.employee where loginName=? and password=?";
         return jdbcTemplate.queryForObject(sql, Employee.class, loginName, password);

@@ -10,4 +10,6 @@ public interface EmployeeDao {
     int addEmployee(Employee employee);
 
     List<Employee> getAllEmployee();
+
+    List<Employee> getEmployeeById(int id);
 }

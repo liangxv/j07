@@ -48,6 +48,8 @@ public class EmployeeView {
                 case 2:
                     getAllEmployee();
                     break;
+                case 3:
+                    getEmployeeById();
                 case 4:
                     //查询自己的客户
                     findByEmployeeId();
@@ -68,6 +70,12 @@ public class EmployeeView {
                     return;
             }
         }
+    }
+
+    private static void getEmployeeById() {
+        System.out.println("请输入ID: ");
+        int id = scanner.nextInt();
+        employeeDao.getEmployeeById(id);
     }
 
     private static void getAllEmployee() {
