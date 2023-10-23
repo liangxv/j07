@@ -1,5 +1,3 @@
-import com.woniuxy.dao.UserDao;
-import com.woniuxy.dao.impl.UserDaoImpl;
 import com.woniuxy.view.CommonView;
 import com.woniuxy.view.ContactPersonView;
 import com.woniuxy.view.UserView;
@@ -9,7 +7,6 @@ import java.util.Scanner;
 
 public class CrmApplication {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final UserDao userDao = new UserDaoImpl();
 
     public static void main(String[] args) {
         WelcomeView.operate();

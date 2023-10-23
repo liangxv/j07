@@ -41,6 +41,7 @@ public class ProductView {
                     break;
                 case 4:
                     deleteProduct();
+                    break;
                 case 10:
                     return;
             }

@@ -38,8 +38,11 @@ class OrderProcessingTasks implements Callable<Client> {
 
     @Override
     public Client call() throws Exception {
+        System.out.println("开始处理订单");
+        Thread.sleep(10);
         String orderNumber= UUID.randomUUID().toString().replace("-", "");
         Client client = new Client(name,orderNumber,1);
+        System.out.println("订单创建完成");
         Thread.sleep(10);
         return client;
     }

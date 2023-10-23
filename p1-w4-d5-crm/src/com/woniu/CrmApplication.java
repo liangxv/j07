@@ -4,6 +4,7 @@ import com.woniu.utils.LoginStatus;
 import com.woniu.view.CommonView;
 import com.woniu.view.CustomerView;
 import com.woniu.view.EmployeeView;
+import com.woniu.view.ProductView;
 
 import java.util.Scanner;
 
@@ -26,7 +27,7 @@ public class CrmApplication {
                     break;
                 case 3:
                     //调用产品管理模块
-                    System.out.println("调用产品管理模块");
+                    ProductView.operate();
                     break;
                 case 0:
                     return;
